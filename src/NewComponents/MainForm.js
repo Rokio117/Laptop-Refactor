@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import FeatureItem from './feature-item'
+import SummaryOption from './summaryOption'
 
  export default class MainForm extends Component {
   render() {
@@ -10,15 +12,19 @@ import React, { Component } from 'react';
       <main>
         <form className="main__form">
           <h2>Customize your laptop</h2>
-          {features}
+          {<FeatureItem 
+
+          />}
         </form>
         <section className="main__summary">
           <h2>Your cart</h2>
-          {summary}
+          {<SummaryOption
+             
+          />}
           <div className="summary__total">
             <div className="summary__total__label">Total</div>
             <div className="summary__total__value">
-              {USCurrencyFormat.format(total)}
+              {this.props.USCurrencyFormat.format(this.props.total)}
             </div>
           </div>
         </section>

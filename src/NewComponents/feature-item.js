@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import slugify from 'slugify';
+import Feature from './Feature'
+
 
 export default class FeatureItem extends Component {
   render() {
-    return(
-      <div key={itemHash} className="feature__item">
-            <input
-              type="radio"
-              id={itemHash}
-              className="feature__option"
-              name={slugify(feature)}
-              checked={item.name === this.state.selected[feature].name}
-              onChange={e => this.updateFeature(feature, item)}
-            />
-            <label htmlFor={itemHash} className="feature__label">
-              {item.name} ({USCurrencyFormat.format(item.cost)})
-            </label>
-          </div>
-    )
-  }
+   return(
+    <>
+    <div key={this.props.itemHash} className="feature__item">
+    <input
+      type="radio"
+      id={this.props.itemHash}
+      className="feature__option"
+      name={slugify(this.props.feature)}
+      checked={this.props.item.name === this.state.selected[this.props.feature].name}
+      onChange={e => this.updateFeature(this.props.feature, this.props.item)}
+    />
+    <label htmlFor={this.props.itemHash} className="feature__label">
+      {this.props.item.name} ({this.props.USCurrencyFormat.format(this.props.item.cost)})
+    </label>
+  </div>
   
+    <Feature 
+      featureHash={this.props.featureHash}
+      feature={this.props.feature}
+      options={this.props.options}
+    />
+  </>
+   )
   }
-  
+}
+

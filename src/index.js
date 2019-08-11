@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import RefactoredApp from './RevisedApp'
+import NewTry from './NewComponents/newTry'
 
 const FEATURES = {
   Processor: [
@@ -46,4 +48,4 @@ const FEATURES = {
   ]
 };
 
-ReactDOM.render(<App features={FEATURES}/>, document.getElementById('root'));
+ReactDOM.render(<RefactoredApp features={FEATURES}/>, document.getElementById('root'));

@@ -4,7 +4,8 @@ class NewTry extends Component {
   render() {
     return(
       <div>
-        {this.props.features.Processor[1].name}
+        {Object.keys(this.props.features).map(feature => <div>{feature}</div>) 
+        }
       </div>
     )
   }

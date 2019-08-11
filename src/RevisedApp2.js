@@ -5,9 +5,8 @@ import React, { Component } from 'react';
 import slugify from 'slugify';
 
 import './App.css';
-import FeatureItem from './NewComponents/feature-item'
-import MainForm from './NewComponents/MainForm'
-import SummaryOption from './NewComponents/summaryOption'
+import Feature2 from './NewComponentsV2/Feature2'
+import FeatureItem2 from './NewComponentsV2/FeatureItem2'
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -16,7 +15,7 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   currency: 'USD'
 });
 
-class RefactoredApp extends Component {
+class RevisedApp2 extends Component {
   state = {
     selected: {
       Processor: {
@@ -52,19 +51,23 @@ class RefactoredApp extends Component {
       const options = this.props.features[feature].map(item => {
         const itemHash = slugify(JSON.stringify(item));
         return (
-         <>
-         <FeatureItem 
-         itemHash ={itemHash}
-         feature ={feature}
-         updateFeature = {(feature, newValue) => {this.updateFeature(feature, newValue)}}
-         item={item}
-         USCurrencyFormat = {USCurrencyFormat}
-         featureHash ={featureHash}
-         options={options}
-         />
-         </>
+          <FeatureItem2 
+            itemHash={itemHash}
+            feature={feature}
+            item={item}
+            USCurrencyFormat={this.USCurrencyFormat}
+            updateFeature={() => this.updateFeature(feature, newValue)}
+          />
         );
       });
+
+      return (
+        <Feature2 
+          featureHash={featureHash}
+          feature={feature}
+          options={options}
+        />
+      );
     });
 
     const summary = Object.keys(this.state.selected).map((feature, idx) => {
@@ -72,12 +75,13 @@ class RefactoredApp extends Component {
       const selectedOption = this.state.selected[feature];
 
       return (
-        <SummaryOption 
-          featureHash={featureHash}
-          selectedOption={selectedOption}
-          USCurrencyFormat={USCurrencyFormat}
-          feature={this.feature}
-        />
+        <div className="summary__option" key={featureHash}>
+          <div className="summary__option__label">{feature} </div>
+          <div className="summary__option__value">{selectedOption.name}</div>
+          <div className="summary__option__cost">
+            {USCurrencyFormat.format(selectedOption.cost)}
+          </div>
+        </div>
       );
     });
 
@@ -87,14 +91,29 @@ class RefactoredApp extends Component {
     );
 
     return (
-      <MainForm
-        features={features}
-        summary={summary} 
-        USCurrencyFormat={USCurrencyFormat}
-        total={total}
-      />
+      <div className="App">
+        <header>
+          <h1>ELF Computing | Laptops</h1>
+        </header>
+        <main>
+          <form className="main__form">
+            <h2>Customize your laptop</h2>
+            {features}
+          </form>
+          <section className="main__summary">
+            <h2>Your cart</h2>
+            {summary}
+            <div className="summary__total">
+              <div className="summary__total__label">Total</div>
+              <div className="summary__total__value">
+                {USCurrencyFormat.format(total)}
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
     );
   }
 }
 
-export default RefactoredApp;
+export default RevisedApp2;

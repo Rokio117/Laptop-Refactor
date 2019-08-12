@@ -1,13 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import RefactoredApp from './RevisedApp'
-import NewTry from './NewComponents/newTry'
-import FeatureItem from './NewComponents/feature-item'
-import Feature from './NewComponents/Feature'
-import SummaryOption from './NewComponents/summaryOption'
-import MainForm from './NewComponents/MainForm'
 import RevisedApp2 from './RevisedApp2'
 
 const FEATURES = {

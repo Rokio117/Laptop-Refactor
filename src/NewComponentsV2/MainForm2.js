@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Summary from './SummaryOption2'
+import AllFeatures from './AllFeatures'
+
 
 export default class MainForm2 extends Component {
   render() {
@@ -11,7 +13,16 @@ export default class MainForm2 extends Component {
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
-            {this.props.features}
+            <AllFeatures 
+              features={this.props.features}
+              USCurrencyFormat={this.props.USCurrencyFormat}
+              checked={this.props.checked}
+              feature={this.props.feature}
+              item={this.props.item}
+              updateFeature={this.props.updateFeature}
+              selected={this.props.selected}
+
+            />
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>

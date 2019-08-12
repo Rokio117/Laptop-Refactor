@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-export default class Feature2 extends Component {
+export default class Feature extends Component {
   render() {
     return(
     <fieldset className="feature" key={this.props.featureHash}>

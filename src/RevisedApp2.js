@@ -7,6 +7,8 @@ import slugify from 'slugify';
 import './App.css';
 import Feature2 from './NewComponentsV2/Feature2'
 import FeatureItem2 from './NewComponentsV2/FeatureItem2'
+import Summary from './NewComponentsV2/SummaryOption2';
+import MainForm2 from './NewComponentsV2/MainForm2'
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -53,10 +55,12 @@ class RevisedApp2 extends Component {
         return (
           <FeatureItem2 
             itemHash={itemHash}
+            checked={item.name === this.state.selected[feature].name}
             feature={feature}
             item={item}
-            USCurrencyFormat={this.USCurrencyFormat}
-            updateFeature={() => this.updateFeature(feature, newValue)}
+            USCurrencyFormat={USCurrencyFormat}
+            updateFeature={this.updateFeature}
+
           />
         );
       });
@@ -70,20 +74,7 @@ class RevisedApp2 extends Component {
       );
     });
 
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-
-      return (
-        <div className="summary__option" key={featureHash}>
-          <div className="summary__option__label">{feature} </div>
-          <div className="summary__option__value">{selectedOption.name}</div>
-          <div className="summary__option__cost">
-            {USCurrencyFormat.format(selectedOption.cost)}
-          </div>
-        </div>
-      );
-    });
+    
 
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost,
@@ -91,29 +82,18 @@ class RevisedApp2 extends Component {
     );
 
     return (
-      <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
-        <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            {features}
-          </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
-          </section>
-        </main>
-      </div>
+     <MainForm2 
+      features={features}
+      selectedFeatures={this.state.selected}
+      selectedOption={this.state.selected}
+      USCurrencyFormat={USCurrencyFormat}
+      total={total}
+     />
     );
   }
 }
 
 export default RevisedApp2;
+
+
+

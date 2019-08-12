@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import slugify from 'slugify';
 
-export default class FeatureItem2 extends Component {
+export default class Features extends Component {
   render() {
     return(
       <div key={this.props.itemHash} className="feature__item">

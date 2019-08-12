@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // in both URLs and html attributes
 
 import './App.css';
-import MainForm2 from './NewComponentsV2/MainForm2'
+import MainForm from './NewComponentsV2/MainForm'
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -13,7 +13,7 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   currency: 'USD'
 });
 
-class RevisedApp2 extends Component {
+class RefactoredApp extends Component {
   state = {
     selected: {
       Processor: {
@@ -49,7 +49,7 @@ class RevisedApp2 extends Component {
       0
     );
     return (
-     <MainForm2 
+     <MainForm 
       selected={this.state.selected}
       features={this.props.features}
       selectedFeatures={this.state.selected}
@@ -62,7 +62,7 @@ class RevisedApp2 extends Component {
   }
 }
 
-export default RevisedApp2;
+export default RefactoredApp;
 
 
 

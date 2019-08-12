@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import RevisedApp2 from './RevisedApp2'
+import RefactoredApp from './RefactoredApp'
 
 const FEATURES = {
   Processor: [
@@ -46,4 +46,4 @@ const FEATURES = {
   ]
 };
 
-ReactDOM.render(<RevisedApp2 features={FEATURES}/>, document.getElementById('root'));
+ReactDOM.render(<RefactoredApp features={FEATURES}/>, document.getElementById('root'));

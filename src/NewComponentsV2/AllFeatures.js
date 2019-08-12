@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import slugify from 'slugify';
-import FeatureItem2 from './FeatureItem2'
-import Feature2 from './Feature2'
+import Features from './Features'
+import Feature from './Feature'
 
 export default class AllFeatures extends Component {
   render() {
@@ -11,7 +11,7 @@ export default class AllFeatures extends Component {
         const options = this.props.features[feature].map(item => {
           const itemHash = slugify(JSON.stringify(item));
           return (
-            <FeatureItem2 
+            <Features 
               itemHash={itemHash}
               checked={item.name === this.props.selected[feature].name}
               feature={feature}
@@ -24,7 +24,7 @@ export default class AllFeatures extends Component {
         });
   
         return (
-          <Feature2 
+          <Feature 
             featureHash={featureHash}
             feature={feature}
             options={options}

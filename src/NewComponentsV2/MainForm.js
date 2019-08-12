@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import Summary from './SummaryOption2'
+import Summary from './Summary'
 import AllFeatures from './AllFeatures'
 
 
-export default class MainForm2 extends Component {
+export default class MainForm extends Component {
   render() {
     return(
       <div className="App">
